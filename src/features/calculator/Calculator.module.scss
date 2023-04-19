@@ -1,0 +1,24 @@
+@import "../../common/styles/sass/mixins";
+
+.container{
+  width: 920px;
+  height: 481px;
+  background: #FFFFFF;
+  box-shadow: 0 32px 43px rgba(79, 166, 175, 0.200735);
+  border-radius: 25px;
+  @include flex(row);
+  align-items: center;
+  justify-content: center;
+  gap:48px;
+  .dataBlock{
+    width: 379px;
+    height: 388px;
+    border: 1px solid red;
+  }
+  .resultsBlock{
+    width: 413px;
+    height: 417px;
+    background: #00474B;
+    border-radius: 15px;
+  }
+}
