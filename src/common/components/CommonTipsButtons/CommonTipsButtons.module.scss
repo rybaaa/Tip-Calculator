@@ -1,9 +1,9 @@
-@import "../../styles/sass/mixins";
+@import '../../styles/sass/mixins';
 
-.wrapper {
+.button {
   width: 117px;
   height: 48px;
-  background: #00474B;
+  background: #00474b;
   border-radius: 5px;
   @include text(36px, $textColor2);
   @include flex(row);
@@ -12,11 +12,24 @@
   cursor: pointer;
   border: none;
   &:focus {
-    background: #26C2AE;
-    color: #00474B;
+    background: #26c2ae;
+    color: #00474b;
   }
-  &:hover{
-    background: #9FE8DF;
-    color: #00474B;
+  &:hover {
+    background: #9fe8df;
+    color: #00474b;
   }
+}
+
+.currentBtn{
+  width: 117px;
+  height: 48px;
+  border-radius: 5px;
+  @include text(36px, #00474b);
+  @include flex(row);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: #26c2ae;
 }

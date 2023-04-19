@@ -3,7 +3,7 @@ import s from './CommonResult.module.scss'
 
 type CommonResultType = {
   title: string
-  price: string
+  price: number
 }
 
 export function CommonResult({ title, price }: CommonResultType) {
