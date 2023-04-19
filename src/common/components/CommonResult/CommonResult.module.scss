@@ -1,0 +1,26 @@
+@import "../../styles/sass/mixins";
+.wrapper {
+  @include flex(row);
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px;
+  height: 71px;
+  .titleBlock{
+    .nameTitle{
+      @include text(24px, $textColor2);
+      font-size: 16px;
+      margin: 0;
+    }
+    .perPerson{
+      @include text(19px, #7F9D9F);
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+  .price{
+    @include text(71px, #26C2AE);
+    font-size: 48px;
+    text-align: right;
+    letter-spacing: -1px;
+  }
+}

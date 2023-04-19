@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Main.module.scss'
 import logo from '../../assets/logo.svg'
-import { Calculator } from '../../features/calculator/Calculator'
+import { Calculator } from './Calculator/Calculator'
 
 export function Main() {
   return (

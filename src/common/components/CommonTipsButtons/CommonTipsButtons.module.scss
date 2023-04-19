@@ -1,0 +1,22 @@
+@import "../../styles/sass/mixins";
+
+.wrapper {
+  width: 117px;
+  height: 48px;
+  background: #00474B;
+  border-radius: 5px;
+  @include text(36px, $textColor2);
+  @include flex(row);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  &:focus {
+    background: #26C2AE;
+    color: #00474B;
+  }
+  &:hover{
+    background: #9FE8DF;
+    color: #00474B;
+  }
+}
