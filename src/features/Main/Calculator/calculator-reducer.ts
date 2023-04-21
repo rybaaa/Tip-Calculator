@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-/* eslint-disable import/no-cycle */
 import { RootStateType } from '../../../app/store'
 
 const initialState = {

@@ -44,6 +44,9 @@
     .buttonDisabled{
       background: #0D686D;
       color: #00474B;
+      &:hover {
+        background: #0D686D;
+      }
     }
   }
 }

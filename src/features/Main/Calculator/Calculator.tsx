@@ -37,6 +37,7 @@ export function Calculator() {
     if (e.currentTarget.value) {
       if (valueIsChanged) {
         dispatch(changeBillAC({ bill: e.currentTarget.value }))
+        dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
         dispatch(changeBillAC({ bill: e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))
@@ -47,10 +48,10 @@ export function Calculator() {
   }
 
   const changePersonsNumber = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value)
     if (e.currentTarget.value) {
       if (valueIsChanged) {
         dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
+        dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
         dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))

@@ -4,6 +4,7 @@ import s from './CommonTipsButtons.module.scss'
 import {
   currentTipSelector,
   setCurrentTipAC,
+  toggleResetButtonAC,
   toggleValueIsChangedAC,
   valueIsChangedSelector,
 } from '../../../features/Main/Calculator/calculator-reducer'
@@ -21,6 +22,7 @@ export function CommonTipsButtons({ tip }: CommonTipsButtonsType) {
   const changeTips = (newTip: string) => {
     if (valueIsChanged) {
       dispatch(setCurrentTipAC({ tip: newTip }))
+      dispatch(toggleResetButtonAC({ isActive: true }))
     } else {
       dispatch(setCurrentTipAC({ tip: newTip }))
       dispatch(toggleValueIsChangedAC({ isChanged: true }))

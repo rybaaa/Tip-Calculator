@@ -7,6 +7,7 @@ import {
   changeCustomTipAC,
   customTipSelector,
   tipsSelector,
+  toggleResetButtonAC,
   toggleValueIsChangedAC,
   valueIsChangedSelector,
 } from '../../features/Main/Calculator/calculator-reducer'
@@ -21,6 +22,7 @@ export function TipsButtons() {
     if (e.currentTarget.value && +e.currentTarget.value <= 200) {
       if (valueIsChanged) {
         dispatch(changeCustomTipAC({ tip: e.currentTarget.value }))
+        dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
         dispatch(changeCustomTipAC({ tip: e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))
