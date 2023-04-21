@@ -2,7 +2,7 @@
 
 .container {
   width: 920px;
-  height: 481px;
+  min-height: 481px;
   background: #ffffff;
   box-shadow: 0 32px 43px rgba(79, 166, 175, 0.200735);
   border-radius: 25px;
@@ -10,11 +10,29 @@
   align-items: center;
   justify-content: center;
   gap: 48px;
+  flex-wrap: wrap;
+  @media screen and (max-width: 930px){
+    width: 100%;
+    min-height: 100px;
+    margin: 0 auto;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:0;
+  }
+  @media screen and (max-width: 440px){
+    align-items: center;
+  }
   .dataBlock {
     width: 379px;
-    height: 388px;
+    min-height: 388px;
     @include flex(column);
     justify-content: space-between;
+    @media screen and (max-width: 930px){
+      margin: 32px auto;
+      align-items: center;
+      width: 350px;
+    }
   }
   .resultsBlock {
     width: 413px;
@@ -23,7 +41,16 @@
     border-radius: 15px;
     @include flex(column);
     justify-content: space-between;
+    @media screen and (max-width: 440px){
+      width: 327px;
+      height: 257px;
+      padding-bottom: 20px;
+    }
     .results {
+      @media screen and (max-width: 440px){
+        @include flex(column);
+        margin: 35px 20px;
+      }
     }
     .button {
       width: 80%;

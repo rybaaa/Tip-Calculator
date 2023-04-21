@@ -1,11 +1,15 @@
 @import '../../common/styles/sass/mixins';
 
 .container {
-  width: 100vw;
-  height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
   background-color: #c5e4e7;
   @include flex(column);
   justify-content: center;
   align-items: center;
   gap: 90px;
+  @media screen and (max-width: 930px){
+    gap: 40px;
+    padding-top: 40px;
+  }
 }

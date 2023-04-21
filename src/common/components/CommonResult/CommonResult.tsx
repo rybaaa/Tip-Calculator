@@ -14,7 +14,7 @@ export function CommonResult({ title, price, people }: CommonResultType) {
         <p className={s.nameTitle}>{title}</p>
         <p className={s.perPerson}>/ person</p>
       </div>
-      <div className={s.price}>{people ? `${price}` : '0.00'}</div>
+      <div className={s.price}>{people ? `$${price}` : '$0.00'}</div>
     </div>
   )
 }

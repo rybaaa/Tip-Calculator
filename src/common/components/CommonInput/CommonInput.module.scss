@@ -3,6 +3,9 @@
 .wrapper {
   width: 100%;
   @include flex(column);
+  @media screen and (max-width: 440px){
+    width: 311px;
+  }
 
   .label {
     width: 100%;
