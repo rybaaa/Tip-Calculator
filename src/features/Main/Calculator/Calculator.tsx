@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import s from './Calculator.module.scss'
 import { CommonInput } from '../../../common/components/CommonInput/CommonInput'
@@ -12,7 +12,12 @@ import {
   changeBillAC,
   changePersonsNumberAC,
   currentTipSelector,
+  isActiveResetButtonSelector,
   peopleNumberSelector,
+  resetValuesAC,
+  toggleResetButtonAC,
+  toggleValueIsChangedAC,
+  valueIsChangedSelector,
 } from './calculator-reducer'
 
 export function Calculator() {
@@ -20,35 +25,74 @@ export function Calculator() {
   const bill = useAppSelector(billSelector)
   const peopleNumber = useAppSelector(peopleNumberSelector)
   const tips = useAppSelector(currentTipSelector)
-  // const totalFee = useAppSelector(totalFeeSelector).toFixed(2)
-  // const totalTips = useAppSelector(totalTipsSelector).toFixed(2)
-  const tipsFee = (bill * tips) / 100
-  const totalFee = bill + tipsFee
+  const valueIsChanged = useAppSelector(valueIsChangedSelector)
+  const resetButtonIsActive = useAppSelector(isActiveResetButtonSelector)
 
-  const changeBill = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeBillAC({ bill: +e.currentTarget.value }))
+  const tipsFee = (+bill * +tips) / 100
+  const totalFee = +bill + tipsFee
+  const tipsFeePerPerson = (tipsFee / +peopleNumber).toFixed(2)
+  const totalFeePerPerson = (totalFee / +peopleNumber).toFixed(2)
+
+  const changeBill = (e: React.FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value) {
+      if (valueIsChanged) {
+        dispatch(changeBillAC({ bill: e.currentTarget.value }))
+      } else {
+        dispatch(changeBillAC({ bill: e.currentTarget.value }))
+        dispatch(toggleValueIsChangedAC({ isChanged: true }))
+      }
+    } else {
+      e.preventDefault()
+    }
   }
-  const changePersonsNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changePersonsNumberAC({ number: +e.currentTarget.value }))
+
+  const changePersonsNumber = (e: React.FormEvent<HTMLInputElement>) => {
+    console.log(e.currentTarget.value)
+    if (e.currentTarget.value) {
+      if (valueIsChanged) {
+        dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
+      } else {
+        dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
+        dispatch(toggleValueIsChangedAC({ isChanged: true }))
+      }
+    } else {
+      e.preventDefault()
+    }
+  }
+
+  const resetValues = () => {
+    dispatch(resetValuesAC())
+    dispatch(toggleResetButtonAC({ isActive: false }))
   }
   return (
     <div className={s.container}>
       <div className={s.dataBlock}>
-        <CommonInput value={bill} label="Bill" icon={dollar} onChange={changeBill} />
+        <CommonInput
+          label="Bill"
+          icon={dollar}
+          value={bill}
+          onChange={changeBill}
+          isChanged={valueIsChanged}
+        />
         <TipsButtons />
         <CommonInput
-          value={peopleNumber}
           label="Number of People"
+          value={peopleNumber}
           icon={person}
           onChange={changePersonsNumber}
+          isChanged={valueIsChanged}
         />
       </div>
       <div className={s.resultsBlock}>
         <div className={s.results}>
-          <CommonResult price={tipsFee / peopleNumber} title="Tip Amount" />
-          <CommonResult price={totalFee / peopleNumber} title="Total" />
+          <CommonResult price={tipsFeePerPerson} title="Tip Amount" people={peopleNumber} />
+          <CommonResult price={totalFeePerPerson} title="Total" people={peopleNumber} />
         </div>
-        <button className={s.button} type="button">
+        <button
+          className={resetButtonIsActive ? s.button : `${s.button} ${s.buttonDisabled}`}
+          type="button"
+          onClick={resetValues}
+        >
           RESET
         </button>
       </div>

@@ -26,7 +26,6 @@
       @include text(36px, #00474b);
       text-align: right;
       mix-blend-mode: normal;
-      opacity: 0.35;
       box-sizing: border-box;
       cursor: pointer;
 
@@ -39,10 +38,24 @@
         border: 2px solid #26c2ae;
       }
     }
+    .inputWithError{
+      border: 2px solid #E17052;
+    }
     .dollarIcon {
       position: absolute;
       top: calc(50% - 8px);
       left: 19px;
+    }
+    .error{
+      display:none
+    }
+    .errorVisible{
+      position: absolute;
+      top: -21px;
+      right: 0;
+      @include text(24px, #E17457);
+      font-size: 16px;
+      visibility: visible;
     }
   }
 }

@@ -14,15 +14,15 @@
     gap: 14px;
     flex-wrap: wrap;
     .input {
-      width: 113px;
+      width: 87px;
       height: 48px;
       background: #f3f9fa;
       border-radius: 5px;
-      text-align: center;
+      text-align: right;
       @include text(36px, #00474b);
       cursor: pointer;
       border: 2px solid #fff;
-      padding: 0;
+      padding: 0 13px;
       &:hover {
         border: 2px solid #26c2ae;
         border-radius: 5px;

@@ -1,14 +1,15 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import s from './CommonInput.module.scss'
 
 type CommonInputType = {
   label: string
-  value: number
+  value: string
   icon: string
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void
+  isChanged: boolean
 }
 
-export function CommonInput({ label, value, icon, onChange }: CommonInputType) {
+export function CommonInput({ label, value, icon, onChange, isChanged }: CommonInputType) {
   return (
     <div className={s.wrapper}>
       <label className={s.label} htmlFor="input">
@@ -16,15 +17,17 @@ export function CommonInput({ label, value, icon, onChange }: CommonInputType) {
       </label>
       <div className={s.inputBlock}>
         <input
-          onChange={(e) => {
+          onInput={(e) => {
             onChange(e)
           }}
           value={value}
-          className={s.input}
-          type="text"
+          className={isChanged && !value ? `${s.input} ${s.inputWithError}` : s.input}
+          type="number"
           id="input"
+          placeholder="0"
         />
         <img className={s.dollarIcon} src={icon} alt="dollar" />
+        <span className={isChanged && !value ? s.errorVisible : s.error}>Can&apos;t be zero</span>
       </div>
     </div>
   )
