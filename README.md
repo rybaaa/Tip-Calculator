@@ -11,10 +11,8 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -28,42 +26,34 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./src/assets/screenshot.JPG)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Code](https://tip-calculator-rybak.vercel.app/)
+- Live Site URL: [Demo](https://github.com/rybaaa/Tip-Calculator)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
+- [React](https://reactjs.org/) - JS library
+- [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started) - The official, opinionated, batteries-included toolset for efficient Redux development
 - SCSS
 - Flexbox
+- Semantic HTML5 markup
 - Module CSS
-- [React](https://reactjs.org/) - JS library
 
 ### What I learned
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
-
-### Continued development
-
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Official documentation of Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started) - It helps you with managing store in applications and gives some recommendations hpw to use it correctly
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+- Website - [Portfolio](https://anton-rybak.netlify.app/)
+- Frontend Mentor - [@rybaaa](https://www.frontendmentor.io/profile/rybaaa)
+- Linkedin - [Anton Rybak](https://www.linkedin.com/in/anton-rybak-8babb6188/)
