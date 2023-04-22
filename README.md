@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Code](https://tip-calculator-rybak.vercel.app/)
-- Live Site URL: [Demo](https://github.com/rybaaa/Tip-Calculator)
+- Solution URL: [Code](https://github.com/rybaaa/Tip-Calculator)
+- Live Site URL: [Demo](https://tip-calculator-rybak.vercel.app/)
 
 ## My process
 
