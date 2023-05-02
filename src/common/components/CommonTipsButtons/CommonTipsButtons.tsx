@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import s from './CommonTipsButtons.module.scss'
 import {
@@ -14,12 +14,12 @@ type CommonTipsButtonsType = {
   tip: string
 }
 
-export function CommonTipsButtons({ tip }: CommonTipsButtonsType) {
+export const CommonTipsButtons = React.memo(({ tip }: CommonTipsButtonsType) => {
   const dispatch = useDispatch()
   const currentTip = useAppSelector(currentTipSelector)
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
 
-  const changeTips = (newTip: string) => {
+  const changeTips = useCallback((newTip: string) => {
     if (valueIsChanged) {
       dispatch(setCurrentTipAC({ tip: newTip }))
       dispatch(toggleResetButtonAC({ isActive: true }))
@@ -27,7 +27,7 @@ export function CommonTipsButtons({ tip }: CommonTipsButtonsType) {
       dispatch(setCurrentTipAC({ tip: newTip }))
       dispatch(toggleValueIsChangedAC({ isChanged: true }))
     }
-  }
+  }, [])
   const btnClassName = currentTip === tip ? s.currentBtn : s.button
   return (
     <button
@@ -40,4 +40,4 @@ export function CommonTipsButtons({ tip }: CommonTipsButtonsType) {
       {tip}%
     </button>
   )
-}
+})

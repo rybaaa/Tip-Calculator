@@ -5,7 +5,7 @@
   align-items: center;
   margin: 40px;
   height: 71px;
-  @media screen and (max-width: 440px){
+  @media screen and (max-width: 440px) {
     margin: 0;
   }
   .titleBlock {
@@ -25,7 +25,7 @@
     font-size: 48px;
     text-align: right;
     letter-spacing: -1px;
-    @media screen and (max-width: 440px){
+    @media screen and (max-width: 440px) {
       font-size: 32px;
       line-height: 47px;
     }

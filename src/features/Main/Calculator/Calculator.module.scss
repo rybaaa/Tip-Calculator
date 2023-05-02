@@ -11,16 +11,16 @@
   justify-content: center;
   gap: 48px;
   flex-wrap: wrap;
-  @media screen and (max-width: 930px){
+  @media screen and (max-width: 930px) {
     width: 100%;
     min-height: 100px;
     margin: 0 auto;
     overflow: hidden;
     flex-direction: column;
     justify-content: flex-start;
-    gap:0;
+    gap: 0;
   }
-  @media screen and (max-width: 440px){
+  @media screen and (max-width: 440px) {
     align-items: center;
   }
   .dataBlock {
@@ -28,7 +28,7 @@
     min-height: 388px;
     @include flex(column);
     justify-content: space-between;
-    @media screen and (max-width: 930px){
+    @media screen and (max-width: 930px) {
       margin: 32px auto;
       align-items: center;
       width: 350px;
@@ -41,13 +41,13 @@
     border-radius: 15px;
     @include flex(column);
     justify-content: space-between;
-    @media screen and (max-width: 440px){
+    @media screen and (max-width: 440px) {
       width: 327px;
       height: 257px;
       padding-bottom: 20px;
     }
     .results {
-      @media screen and (max-width: 440px){
+      @media screen and (max-width: 440px) {
         @include flex(column);
         margin: 35px 20px;
       }
@@ -68,11 +68,11 @@
         background: #9fe8df;
       }
     }
-    .buttonDisabled{
-      background: #0D686D;
-      color: #00474B;
+    .buttonDisabled {
+      background: #0d686d;
+      color: #00474b;
       &:hover {
-        background: #0D686D;
+        background: #0d686d;
       }
     }
   }

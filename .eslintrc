@@ -13,6 +13,7 @@
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "import/no-cycle": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "react/function-component-definition": "off"
   }
 }

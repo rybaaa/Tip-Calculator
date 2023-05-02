@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import s from './Calculator.module.scss'
 import { CommonInput } from '../../../common/components/CommonInput/CommonInput'
@@ -28,14 +28,20 @@ export function Calculator() {
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
   const resetButtonIsActive = useAppSelector(isActiveResetButtonSelector)
 
-  const tipsFee = (+bill * +tips) / 100
-  const totalFee = +bill + tipsFee
-  const tipsFeePerPerson = (tipsFee / +peopleNumber).toFixed(2)
-  const totalFeePerPerson = (totalFee / +peopleNumber).toFixed(2)
+  const tipsFee = useMemo(() => (+bill * +tips) / 100, [bill, tips])
+  const totalFee = useMemo(() => +bill + tipsFee, [bill, tipsFee])
+  const tipsFeePerPerson = useMemo(
+    () => (tipsFee / +peopleNumber).toFixed(2),
+    [tipsFee, peopleNumber]
+  )
+  const totalFeePerPerson = useMemo(
+    () => (totalFee / +peopleNumber).toFixed(2),
+    [totalFee, peopleNumber]
+  )
   const regexForBill = /^[0-9.]*$/
   const regexForPersons = /^[0-9]*$/
 
-  const changeBill = (e: React.FormEvent<HTMLInputElement>) => {
+  const changeBill = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     if (regexForBill.test(e.currentTarget.value) && e.currentTarget.value.length <= 7) {
       if (valueIsChanged) {
         dispatch(changeBillAC({ bill: e.currentTarget.value }))
@@ -47,9 +53,9 @@ export function Calculator() {
     } else {
       e.preventDefault()
     }
-  }
+  }, [])
 
-  const changePersonsNumber = (e: React.FormEvent<HTMLInputElement>) => {
+  const changePersonsNumber = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     if (regexForPersons.test(e.currentTarget.value) && e.currentTarget.value.length <= 3) {
       if (valueIsChanged) {
         dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
@@ -61,7 +67,7 @@ export function Calculator() {
     } else {
       e.preventDefault()
     }
-  }
+  }, [])
 
   const resetValues = () => {
     dispatch(resetValuesAC())

@@ -7,14 +7,12 @@ type CommonResultType = {
   people: string
 }
 
-export function CommonResult({ title, price, people }: CommonResultType) {
-  return (
-    <div className={s.wrapper}>
-      <div className={s.titleBlock}>
-        <p className={s.nameTitle}>{title}</p>
-        <p className={s.perPerson}>/ person</p>
-      </div>
-      <div className={s.price}>{people ? `$${price}` : '$0.00'}</div>
+export const CommonResult = React.memo(({ title, price, people }: CommonResultType) => (
+  <div className={s.wrapper}>
+    <div className={s.titleBlock}>
+      <p className={s.nameTitle}>{title}</p>
+      <p className={s.perPerson}>/ person</p>
     </div>
-  )
-}
+    <div className={s.price}>{people ? `$${price}` : '$0.00'}</div>
+  </div>
+))

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import s from './TipsButtons.module.scss'
 import { CommonTipsButtons } from '../../common/components/CommonTipsButtons/CommonTipsButtons'
@@ -12,14 +12,14 @@ import {
   valueIsChangedSelector,
 } from '../../features/Main/Calculator/calculator-reducer'
 
-export function TipsButtons() {
+export const TipsButtons = React.memo(() => {
   const dispatch = useDispatch()
   const tips = useAppSelector(tipsSelector)
   const customTip = useAppSelector(customTipSelector)
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
   const regex = /^[0-9.]*$/
 
-  const changeTips = (e: React.FormEvent<HTMLInputElement>) => {
+  const changeTips = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     if (
       regex.test(e.currentTarget.value) &&
       +e.currentTarget.value <= 200 &&
@@ -35,9 +35,10 @@ export function TipsButtons() {
     } else {
       e.preventDefault()
     }
-  }
+  }, [])
 
   const buttons = tips.map((el) => <CommonTipsButtons key={el} tip={el} />)
+
   return (
     <div className={s.wrapper}>
       <span className={s.title}>Select Tip %</span>
@@ -47,4 +48,4 @@ export function TipsButtons() {
       </div>
     </div>
   )
-}
+})
