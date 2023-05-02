@@ -17,9 +17,14 @@ export function TipsButtons() {
   const tips = useAppSelector(tipsSelector)
   const customTip = useAppSelector(customTipSelector)
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
+  const regex = /^[0-9.]*$/
 
   const changeTips = (e: React.FormEvent<HTMLInputElement>) => {
-    if (e.currentTarget.value && +e.currentTarget.value <= 200) {
+    if (
+      regex.test(e.currentTarget.value) &&
+      +e.currentTarget.value <= 200 &&
+      e.currentTarget.value.length <= 6
+    ) {
       if (valueIsChanged) {
         dispatch(changeCustomTipAC({ tip: e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
@@ -38,13 +43,7 @@ export function TipsButtons() {
       <span className={s.title}>Select Tip %</span>
       <div className={s.tipsTypes}>
         {buttons}
-        <input
-          type="number"
-          className={s.input}
-          value={customTip}
-          placeholder="Custom"
-          onInput={changeTips}
-        />
+        <input className={s.input} value={customTip} placeholder="Custom" onInput={changeTips} />
       </div>
     </div>
   )
