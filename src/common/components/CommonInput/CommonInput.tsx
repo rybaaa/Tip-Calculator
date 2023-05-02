@@ -10,9 +10,10 @@ type CommonInputType = {
 }
 
 export function CommonInput({ label, value, icon, onChange, isChanged }: CommonInputType) {
+  const id = label
   return (
     <div className={s.wrapper}>
-      <label className={s.label} htmlFor="input">
+      <label className={s.label} htmlFor={id}>
         {label}
       </label>
       <div className={s.inputBlock}>
@@ -22,7 +23,7 @@ export function CommonInput({ label, value, icon, onChange, isChanged }: CommonI
           }}
           value={value}
           className={isChanged && !value ? `${s.input} ${s.inputWithError}` : s.input}
-          id="input"
+          id={id}
           placeholder="0"
         />
         <img className={s.dollarIcon} src={icon} alt="dollar" />
