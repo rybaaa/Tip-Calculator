@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootStateType } from '../../../app/store'
 
 const initialState = {
-  bill: '' as string,
-  tips: ['5', '10', '15', '25', '50'] as string[],
-  customTip: '' as string,
-  currentTip: '' as string,
-  peopleNumber: '' as string,
+  bill: 0 as number,
+  tips: [5, 10, 15, 25, 50] as number[],
+  customTip: 0 as number,
+  currentTip: 0 as number,
+  peopleNumber: 0 as number,
   valueIsChanged: false,
   isActiveResetButton: false,
 }
@@ -15,20 +15,20 @@ const slice = createSlice({
   name: 'calculator',
   initialState,
   reducers: {
-    setCurrentTipAC(state, action: PayloadAction<{ tip: string }>) {
+    setCurrentTipAC(state, action: PayloadAction<{ tip: number }>) {
       state.currentTip = action.payload.tip
     },
-    changeBillAC(state, action: PayloadAction<{ bill: string }>) {
+    changeBillAC(state, action: PayloadAction<{ bill: number }>) {
       state.bill = action.payload.bill
     },
-    changePersonsNumberAC(state, action: PayloadAction<{ number: string }>) {
+    changePersonsNumberAC(state, action: PayloadAction<{ number: number }>) {
       state.peopleNumber = action.payload.number
     },
     toggleValueIsChangedAC(state, action: PayloadAction<{ isChanged: boolean }>) {
       state.valueIsChanged = action.payload.isChanged
       state.isActiveResetButton = true
     },
-    changeCustomTipAC(state, action: PayloadAction<{ tip: string }>) {
+    changeCustomTipAC(state, action: PayloadAction<{ tip: number }>) {
       state.currentTip = action.payload.tip
       state.customTip = action.payload.tip
     },
@@ -36,10 +36,10 @@ const slice = createSlice({
       state.isActiveResetButton = action.payload.isActive
     },
     resetValuesAC(state) {
-      state.bill = ''
-      state.currentTip = ''
-      state.customTip = ''
-      state.peopleNumber = ''
+      state.bill = 0
+      state.currentTip = 0
+      state.customTip = 0
+      state.peopleNumber = 0
     },
   },
 })

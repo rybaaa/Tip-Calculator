@@ -26,10 +26,10 @@ export const TipsButtons = React.memo(() => {
       e.currentTarget.value.length <= 6
     ) {
       if (valueIsChanged) {
-        dispatch(changeCustomTipAC({ tip: e.currentTarget.value }))
+        dispatch(changeCustomTipAC({ tip: +e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
-        dispatch(changeCustomTipAC({ tip: e.currentTarget.value }))
+        dispatch(changeCustomTipAC({ tip: +e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))
       }
     } else {
@@ -44,7 +44,12 @@ export const TipsButtons = React.memo(() => {
       <span className={s.title}>Select Tip %</span>
       <div className={s.tipsTypes}>
         {buttons}
-        <input className={s.input} value={customTip} placeholder="Custom" onInput={changeTips} />
+        <input
+          className={s.input}
+          value={customTip ? customTip : ''}
+          placeholder="Custom"
+          onInput={changeTips}
+        />
       </div>
     </div>
   )

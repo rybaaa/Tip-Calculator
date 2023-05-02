@@ -3,7 +3,7 @@ import s from './CommonInput.module.scss'
 
 type CommonInputType = {
   label: string
-  value: string
+  value: number
   icon: string
   onChange: (e: React.FormEvent<HTMLInputElement>) => void
   isChanged: boolean
@@ -22,7 +22,7 @@ export const CommonInput = React.memo(
             onInput={(e) => {
               onChange(e)
             }}
-            value={value}
+            value={value ? value : ''}
             className={isChanged && !value ? `${s.input} ${s.inputWithError}` : s.input}
             id={id}
             placeholder="0"

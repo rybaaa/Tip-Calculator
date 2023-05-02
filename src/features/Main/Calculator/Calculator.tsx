@@ -28,14 +28,14 @@ export function Calculator() {
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
   const resetButtonIsActive = useAppSelector(isActiveResetButtonSelector)
 
-  const tipsFee = useMemo(() => (+bill * +tips) / 100, [bill, tips])
-  const totalFee = useMemo(() => +bill + tipsFee, [bill, tipsFee])
+  const tipsFee = useMemo(() => (bill * tips) / 100, [bill, tips])
+  const totalFee = useMemo(() => bill + tipsFee, [bill, tipsFee])
   const tipsFeePerPerson = useMemo(
-    () => (tipsFee / +peopleNumber).toFixed(2),
+    () => (tipsFee / peopleNumber).toFixed(2),
     [tipsFee, peopleNumber]
   )
   const totalFeePerPerson = useMemo(
-    () => (totalFee / +peopleNumber).toFixed(2),
+    () => (totalFee / peopleNumber).toFixed(2),
     [totalFee, peopleNumber]
   )
   const regexForBill = /^[0-9.]*$/
@@ -44,10 +44,10 @@ export function Calculator() {
   const changeBill = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     if (regexForBill.test(e.currentTarget.value) && e.currentTarget.value.length <= 7) {
       if (valueIsChanged) {
-        dispatch(changeBillAC({ bill: e.currentTarget.value }))
+        dispatch(changeBillAC({ bill: +e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
-        dispatch(changeBillAC({ bill: e.currentTarget.value }))
+        dispatch(changeBillAC({ bill: +e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))
       }
     } else {
@@ -58,10 +58,10 @@ export function Calculator() {
   const changePersonsNumber = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     if (regexForPersons.test(e.currentTarget.value) && e.currentTarget.value.length <= 3) {
       if (valueIsChanged) {
-        dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
+        dispatch(changePersonsNumberAC({ number: +e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
       } else {
-        dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
+        dispatch(changePersonsNumberAC({ number: +e.currentTarget.value }))
         dispatch(toggleValueIsChangedAC({ isChanged: true }))
       }
     } else {

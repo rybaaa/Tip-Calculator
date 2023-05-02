@@ -14,6 +14,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "import/no-cycle": "off",
     "no-param-reassign": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "no-unneeded-ternary": "off"
   }
 }

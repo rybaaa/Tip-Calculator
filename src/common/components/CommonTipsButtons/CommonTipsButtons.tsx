@@ -11,7 +11,7 @@ import {
 import { useAppSelector } from '../../../app/store'
 
 type CommonTipsButtonsType = {
-  tip: string
+  tip: number
 }
 
 export const CommonTipsButtons = React.memo(({ tip }: CommonTipsButtonsType) => {
@@ -19,7 +19,7 @@ export const CommonTipsButtons = React.memo(({ tip }: CommonTipsButtonsType) => 
   const currentTip = useAppSelector(currentTipSelector)
   const valueIsChanged = useAppSelector(valueIsChangedSelector)
 
-  const changeTips = useCallback((newTip: string) => {
+  const changeTips = useCallback((newTip: number) => {
     if (valueIsChanged) {
       dispatch(setCurrentTipAC({ tip: newTip }))
       dispatch(toggleResetButtonAC({ isActive: true }))

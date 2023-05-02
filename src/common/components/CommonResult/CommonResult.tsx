@@ -4,7 +4,7 @@ import s from './CommonResult.module.scss'
 type CommonResultType = {
   title: string
   price: string
-  people: string
+  people: number
 }
 
 export const CommonResult = React.memo(({ title, price, people }: CommonResultType) => (
