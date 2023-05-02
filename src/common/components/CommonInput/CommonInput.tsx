@@ -22,7 +22,6 @@ export function CommonInput({ label, value, icon, onChange, isChanged }: CommonI
           }}
           value={value}
           className={isChanged && !value ? `${s.input} ${s.inputWithError}` : s.input}
-          type="number"
           id="input"
           placeholder="0"
         />

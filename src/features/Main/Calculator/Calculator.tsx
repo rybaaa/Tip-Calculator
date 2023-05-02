@@ -32,9 +32,11 @@ export function Calculator() {
   const totalFee = +bill + tipsFee
   const tipsFeePerPerson = (tipsFee / +peopleNumber).toFixed(2)
   const totalFeePerPerson = (totalFee / +peopleNumber).toFixed(2)
+  const regexForBill = /^[0-9.]*$/
+  const regexForPersons = /^[0-9]*$/
 
   const changeBill = (e: React.FormEvent<HTMLInputElement>) => {
-    if (e.currentTarget.value) {
+    if (regexForBill.test(e.currentTarget.value) && e.currentTarget.value.length <= 7) {
       if (valueIsChanged) {
         dispatch(changeBillAC({ bill: e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
@@ -48,7 +50,7 @@ export function Calculator() {
   }
 
   const changePersonsNumber = (e: React.FormEvent<HTMLInputElement>) => {
-    if (e.currentTarget.value) {
+    if (regexForPersons.test(e.currentTarget.value) && e.currentTarget.value.length <= 3) {
       if (valueIsChanged) {
         dispatch(changePersonsNumberAC({ number: e.currentTarget.value }))
         dispatch(toggleResetButtonAC({ isActive: true }))
